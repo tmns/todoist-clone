@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900");
 
-// General settings
+// General Settings
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -19,7 +20,7 @@ body {
   color: #202020;
   background-color: #fafafa;
   font-smooth: always;
-  -webkit-font-smooting: antialised;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -35,9 +36,9 @@ $generic-border: 1px solid #f1f1f1;
 $generic-bg: #db4c3f;
 
 /* Mixins
-  ====================================== */
-
+  ============================================ */
 @mixin box-overlay() {
+  -webkit-box-shadow: $generic-box-shadow;
   box-shadow: $generic-box-shadow;
   position: absolute;
   width: 100%;
@@ -47,12 +48,20 @@ $generic-bg: #db4c3f;
 }
 
 @mixin va($va-align: center) {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   @if $va-align != center {
+    -webkit-box-pack: left;
+    -ms-flex-pack: left;
     justify-content: left;
   } @else {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -60,7 +69,6 @@ $generic-bg: #db4c3f;
 @mixin no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -93,14 +101,22 @@ $generic-bg: #db4c3f;
   margin: 2px 5px;
 }
 
+@mixin transparent-button() {
+  background-color: transparent;
+  border: 0;
+}
+
 @mixin task-item() {
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   line-height: 18px;
   color: #333;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 14px;
+  list-style-type: none;
   border-bottom: 1px solid #f0f0f0;
   padding-left: 10px;
   cursor: pointer;
@@ -117,8 +133,8 @@ $generic-bg: #db4c3f;
 }
 
 /* Darkmode
-  ====================================== */
-.darkkmode {
+  ============================================ */
+.darkmode {
   header {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
@@ -128,11 +144,13 @@ $generic-bg: #db4c3f;
 }
 
 /* Header
-  ====================================== */
+  ============================================ */
 header {
   border-bottom: solid 1px #ca2100;
   background-color: $generic-bg;
-  transition: height 200ms erase-in;
+  -webkit-transition: height 200ms ease-in;
+  transition: height 200ms ease-in;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   height: 44px;
   z-index: 400;
@@ -146,6 +164,8 @@ header {
 
   nav {
     display: grid;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -163,7 +183,7 @@ header {
     div {
       &.logo {
         padding-left: 8px;
-        grid-area: 1/1;
+        grid-area: 1 / 1;
 
         img {
           width: 24px;
@@ -171,36 +191,53 @@ header {
       }
 
       &.settings {
-        grid-area: 1/2;
+        grid-area: 1 / 2;
         text-align: right;
 
         ul {
           float: right;
+        }
 
-          li {
-            @include va;
+        ul li {
+          @include va;
 
-            list-style-type: none;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            vertical-align: center;
-            float: left;
+          list-style-type: none;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          vertical-align: middle;
+          float: left;
 
-            &:hover {
-              border-radius: 3px;
-              background-color: rgba(255, 255, 255, 0.2);
+          &:hover {
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+
+          &.settings__add {
+            margin-right: 15px;
+            font-size: 30px;
+
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
             }
+          }
 
-            &.settings__add {
-              margin-right: 15px;
-              font-size: 30px;
-            }
+          &.settings__darkmode {
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
 
-            &.settings__dark-mode svg {
-              width: 20px;
-              height: 20px;
+              svg {
+                width: 20px;
+                height: 20px;
+              }
             }
           }
         }
@@ -380,8 +417,8 @@ header {
   }
 }
 
-/* Show confirm delete
-  =================================== */
+/* Show Confirm Delete
+  ============================================ */
 .project-delete-modal {
   position: relative;
 
@@ -403,9 +440,8 @@ header {
     }
 
     button {
-      @include btn('50px');
+      @include btn("50px");
     }
-
     span {
       @include cancel();
       font-weight: normal;
