@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900");
 
 // General settings
 html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -13,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #202020;
   background-color: #fafafa;
   font-smooth: always;
@@ -27,7 +29,8 @@ ul {
 }
 
 // Variables
-$generic-box-shadow: rgba(0,0,0,0.1) 0px 0px 0px 1px, rgba(0,0,0,0.1) 0px 4px 11px;
+$generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
+  rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
 $generic-bg: #db4c3f;
 
@@ -101,7 +104,7 @@ $generic-bg: #db4c3f;
   border-bottom: 1px solid #f0f0f0;
   padding-left: 10px;
   cursor: pointer;
-  
+
   &:hover {
     background-color: #f9f9f9;
   }
@@ -117,8 +120,8 @@ $generic-bg: #db4c3f;
   ====================================== */
 .darkkmode {
   header {
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     background-color: #282828;
     border-color: transparent;
   }
@@ -130,14 +133,14 @@ header {
   border-bottom: solid 1px #ca2100;
   background-color: $generic-bg;
   transition: height 200ms erase-in;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   height: 44px;
   z-index: 400;
   position: fixed;
   top: 0;
   width: 100%;
 
-  @include mq('900px') {
+  @include mq("900px") {
     padding: 0 10px;
   }
 
@@ -152,7 +155,8 @@ header {
     margin: auto;
     height: 44px;
 
-    p, li {
+    p,
+    li {
       color: white;
     }
 
@@ -186,12 +190,12 @@ header {
 
             &:hover {
               border-radius: 3px;
-              background-color: rgba(255,255,255,0.2);
+              background-color: rgba(255, 255, 255, 0.2);
             }
 
             &.settings__add {
               margin-right: 15px;
-              font-size: 30px;  
+              font-size: 30px;
             }
 
             &.settings__dark-mode svg {
@@ -200,6 +204,177 @@ header {
             }
           }
         }
+      }
+    }
+  }
+}
+
+/* Sidebar
+  ============================================ */
+.sidebar {
+  @include no-select();
+  width: 266px;
+  height: calc(100vh);
+  padding-top: 74px;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-right: $generic-border;
+  background-color: #fafafa;
+
+  @include mq("900px") {
+    display: none;
+  }
+
+  li {
+    &:hover .sidebar__project-delete {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+
+  &__project {
+    cursor: pointer;
+
+    div:nth-child(1) {
+      padding: 5px 0;
+      padding-left: 10px;
+      padding-right: 15px;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    &-delete {
+      margin-left: auto;
+      display: none;
+
+      svg {
+        color: #cacaca;
+      }
+    }
+
+    &.active,
+    &:hover {
+      font-weight: bold;
+      background-color: white;
+    }
+
+    &:nth-child(1) {
+      .sidebar__dot {
+        color: #6accbc;
+      }
+    }
+    &:nth-child(2) {
+      .sidebar__dot {
+        color: #fad003;
+      }
+    }
+    &:nth-child(3) {
+      .sidebar__dot {
+        color: #ff8d85;
+      }
+    }
+    &:nth-child(4) {
+      .sidebar__dot {
+        color: #ff9932;
+      }
+    }
+    &:nth-child(5) {
+      .sidebar__dot {
+        color: #af38eb;
+      }
+    }
+  }
+
+  &__projects {
+    padding-left: 3px;
+  }
+
+  &__project {
+    @include va("left");
+  }
+
+  &__dot {
+    margin-right: 10px;
+    font-size: 30px;
+  }
+
+  &__middle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-bottom: $generic-border;
+    padding-left: 10px;
+    cursor: pointer;
+
+    span {
+      color: #0000008a;
+      margin-right: 10px;
+
+      svg.hidden-projects {
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    }
+
+    h2 {
+      margin: 0;
+      color: #333;
+      font-size: 15px;
+      font-weight: bold;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__generic {
+    li {
+      list-style-type: none;
+      color: #333;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      cursor: pointer;
+      line-height: 1.5;
+      font-size: 15px;
+      padding-left: 0;
+      padding-right: 0;
+
+      div:nth-child(1) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 10px 0 10px 10px;
+        width: 100%;
+
+        span:first-of-type {
+          margin-right: 10px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            color: #555;
+          }
+        }
+      }
+
+      &.active,
+      &:hover {
+        font-weight: bold;
+        background-color: white;
       }
     }
   }
