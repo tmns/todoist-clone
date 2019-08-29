@@ -3,6 +3,7 @@ import { FaRegListAlt, FaRegCalendarAlt } from "react-icons/fa";
 import moment from "moment";
 import { firebase } from "../firebase";
 import { useSelectedProjectValue } from "../context";
+import { ProjectOverlay } from "./ProjectOverlay";
 
 export const AddTask = ({
   showAddTaskMain = true,
@@ -55,7 +56,7 @@ export const AddTask = ({
 
   return (
     <div
-      className={showQuickAddTask ? 'add-task add-task__overlay' : 'add-task'}
+      className={showQuickAddTask ? "add-task add-task__overlay" : "add-task"}
       data-testid="add-task-comp"
     >
       {showAddTaskMain && (
@@ -101,7 +102,11 @@ export const AddTask = ({
               </div>
             </>
           )}
-          <p>Project overlay component here</p>
+          <ProjectOverlay
+            setProject={setProject}
+            showProjectOverlay={showProjectOverlay}
+            setShowProjectOverlay={setShowProjectOverlay}
+          />
           <p>TaskDate component here</p>
           <input
             className="add-task__content"
@@ -114,7 +119,7 @@ export const AddTask = ({
             type="button"
             className="add-task__submit"
             data-testid="add-task"
-            onClick={() => 
+            onClick={() =>
               showQuickAddTask
                 ? addTask() && setShowQuickAddTask(false)
                 : addTask()
@@ -144,8 +149,8 @@ export const AddTask = ({
           <span
             className="add-task__project"
             data-testid="show-project-overlay"
-            onClick={() =>  setShowProjectOverlay(!showProjectOverlay)}
-            onKeyDown={() =>  setShowProjectOverlay(!showProjectOverlay)}
+            onClick={() => setShowProjectOverlay(!showProjectOverlay)}
+            onKeyDown={() => setShowProjectOverlay(!showProjectOverlay)}
             tabIndex={0}
             role="button"
           >
@@ -164,5 +169,5 @@ export const AddTask = ({
         </div>
       )}
     </div>
-  )
+  );
 };
