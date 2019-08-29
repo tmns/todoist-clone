@@ -442,7 +442,7 @@ header {
     button {
       @include btn("50px");
     }
-    
+
     span {
       @include cancel();
       font-weight: normal;
@@ -476,7 +476,7 @@ header {
   padding-top: 80px;
   padding-bottom: 84px;
 
-  @include mq('900px') {
+  @include mq("900px") {
     margin-left: 0;
     width: auto;
   }
@@ -516,7 +516,6 @@ header {
       justify-content: center;
       line-height: 16px;
 
-
       .checkbox {
         cursor: pointer;
         border-color: gray;
@@ -528,5 +527,52 @@ header {
         border-radius: 16px;
       }
     }
+  }
+}
+
+/* Add Task
+  ============================================ */
+
+.add-task__plus,
+.add-project__plus {
+  color: #dd4b39;
+  font-size: 18px;
+}
+
+.add-task__text,
+.add-project__text {
+  display: inline-block;
+  color: #545454;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+/* Add Project
+  ============================================ */
+.add-project {
+  padding-left: 13px;
+  padding-right: 20px;
+  margin-top: 20px;
+
+  &__input {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: white !important;
+    border-radius: 3px;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &__submit {
+    @include btn("100px");
+  }
+
+  &__cancel {
+    @include cancel();
   }
 }
