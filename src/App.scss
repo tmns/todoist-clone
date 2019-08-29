@@ -646,7 +646,7 @@ header {
   width: 200px;
   right: 0;
 
-  @__list li {
+  &__list li {
     @include task-item();
     padding: 0;
 
