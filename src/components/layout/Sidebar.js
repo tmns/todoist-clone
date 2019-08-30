@@ -31,9 +31,11 @@ export const Sidebar = () => {
               setActive("inbox");
               setSelectedProject("INBOX");
             }}
-            onKeyDown={() => {
-              setActive("inbox");
-              setSelectedProject("INBOX");
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                setActive("inbox");
+                setSelectedProject("INBOX");
+              }
             }}
           >
             <span>
@@ -55,9 +57,11 @@ export const Sidebar = () => {
               setActive("today");
               setSelectedProject("TODAY");
             }}
-            onKeyDown={() => {
-              setActive("today");
-              setSelectedProject("TODAY");
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                setActive("today");
+                setSelectedProject("TODAY");
+              }
             }}
           >
             <span>
@@ -79,9 +83,11 @@ export const Sidebar = () => {
               setActive("next_7");
               setSelectedProject("NEXT_7");
             }}
-            onKeyDown={() => {
-              setActive("next_7");
-              setSelectedProject("NEXT_7");
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                setActive("next_7");
+                setSelectedProject("NEXT_7");
+              }
             }}
           >
             <span>
@@ -95,7 +101,11 @@ export const Sidebar = () => {
         className="sidebar__middle"
         aria-label="Show/hide projects"
         onClick={() => setShowProjects(!showProjects)}
-        onKeyDown={() => setShowProjects(!showProjects)}
+        onKeyPress={e => {
+          if (e.key === "Enter") {
+            setShowProjects(!showProjects);
+          }
+        }}
         role="button"
         tabIndex={0}
       >
@@ -106,7 +116,7 @@ export const Sidebar = () => {
         </span>
         <h2>Projects</h2>
       </div>
-      
+
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       {showProjects && <AddProject />}
     </div>
