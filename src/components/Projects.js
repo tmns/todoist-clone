@@ -29,9 +29,11 @@ export const Projects = ({ activeValue = true }) => {
             setActive(project.projectId);
             setSelectedProject(project.projectId);
           }}
-          onKeyDown={() => {
-            setActive(project.projectId);
-            setSelectedProject(project.projectId);
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              setActive(project.projectId);
+              setSelectedProject(project.projectId);
+            }
           }}
         >
           <IndividualProject project={project}/>
