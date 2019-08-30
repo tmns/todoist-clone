@@ -17,6 +17,13 @@ export const Checkbox = ({ id }) => {
       className="checkbox-holder"
       data-testid="checkbox-action"
       onClick={() => archiveTask()}
+      onKeyPress={e => {
+        if (e.key === 'Enter') {
+          archiveTask();
+        }
+      }}
+      tabIndex={0}
+      aria-label="Archive a task"
     >
       <span className="checkbox" />
     </div>
