@@ -43,7 +43,13 @@ export const AddProject = ({ shouldShow = false }) => {
             className="add-project__submit"
             type="button"
             onClick={() => addProject()}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                addProject();
+              }
+            }}
             data-testid="add-project-submit"
+            tabIndex={0}
           >
             Add project
           </button>
@@ -51,6 +57,12 @@ export const AddProject = ({ shouldShow = false }) => {
             data-testid="hide-project-overlay"
             className="add-project__cancel"
             onClick={() => setShow(false)}
+            onKeyPress={e => {
+              if (e.key === "Enter") {
+                setShow(false);
+              }
+            }}
+            tabIndex={0}
           >
             Cancel
           </span>
@@ -61,6 +73,12 @@ export const AddProject = ({ shouldShow = false }) => {
         data-testid="add-project-action"
         className="add-project__text"
         onClick={() => setShow(!show)}
+        onKeyPress={e => {
+          if (e.key === "Enter") {
+            setShow(!show);
+          }
+        }}
+        tabIndex={0}
       >
         Add Project
       </span>
