@@ -19,7 +19,7 @@ export const Sidebar = () => {
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
         <li
-          data-test-id="inbox"
+          data-testid="inbox"
           className={active === "inbox" ? "active" : undefined}
         >
           <div
@@ -45,7 +45,7 @@ export const Sidebar = () => {
           </div>
         </li>
         <li
-          data-test-id="today"
+          data-testid="today"
           className={active === "today" ? "active" : undefined}
         >
           <div
@@ -71,7 +71,7 @@ export const Sidebar = () => {
           </div>
         </li>
         <li
-          data-test-id="next_7"
+          data-testid="next_7"
           className={active === "next_7" ? "active" : undefined}
         >
           <div
