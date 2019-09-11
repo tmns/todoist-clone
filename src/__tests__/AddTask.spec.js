@@ -244,11 +244,11 @@ describe("<AddTask />", () => {
       );
 
       fireEvent.click(queryByTestId("show-task-date-overlay"));
-      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+      expect(queryByTestId("task-date-overlay")).toBeTruthy();
 
       fireEvent.click(queryByTestId("task-date-today"));
       expect(queryByTestId("task-date-overlay")).toBeFalsy();
-      
+
       fireEvent.click(queryByTestId("add-task"));
     });
 
@@ -270,11 +270,11 @@ describe("<AddTask />", () => {
       );
 
       fireEvent.click(queryByTestId("show-task-date-overlay"));
-      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+      expect(queryByTestId("task-date-overlay")).toBeTruthy();
 
       fireEvent.click(queryByTestId("task-date-tomorrow"));
       expect(queryByTestId("task-date-overlay")).toBeFalsy();
-      
+
       fireEvent.click(queryByTestId("add-task"));
     });
 
@@ -296,11 +296,11 @@ describe("<AddTask />", () => {
       );
 
       fireEvent.click(queryByTestId("show-task-date-overlay"));
-      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+      expect(queryByTestId("task-date-overlay")).toBeTruthy();
 
       fireEvent.click(queryByTestId("task-date-next-week"));
       expect(queryByTestId("task-date-overlay")).toBeFalsy();
-      
+
       fireEvent.click(queryByTestId("add-task"));
     });
   });
